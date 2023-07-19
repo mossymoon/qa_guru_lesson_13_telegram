@@ -9,7 +9,7 @@ class RegistrationPage:
         self.registered_user_data = browser.element('.table').all('td').even
 
     def open(self):
-        browser.open('automation-practice-form')
+        browser.open('https://demoqa.com/automation-practice-form')
 
     def fill_registration_form(self, user: UserPageFillForm):
         browser.element('[id=firstName]').should(be.blank).type(user.first_name)
