@@ -6,6 +6,8 @@ from pages.registration_page import UserPageFillForm
 from tests import paths
 
 
+
+
 class RegistrationPage:
     browser = setup_browser
     def __init__(self):
