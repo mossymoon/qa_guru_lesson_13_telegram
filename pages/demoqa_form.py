@@ -1,10 +1,13 @@
 from selene import browser, be, have
 from selene.core import command
+
+from conftest import setup_browser
 from pages.registration_page import UserPageFillForm
 from tests import paths
 
 
 class RegistrationPage:
+    browser = setup_browser
     def __init__(self):
         self.registered_user_data = browser.element('.table').all('td').even
 
