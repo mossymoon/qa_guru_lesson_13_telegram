@@ -3,7 +3,6 @@ import allure
 from pages.demoqa_form import RegistrationPage
 from pages.registration_page import UserPageFillForm
 
-
 def test_user_registration():
     new_user = UserPageFillForm()
     registration = RegistrationPage()
