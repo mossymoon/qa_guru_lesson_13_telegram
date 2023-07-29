@@ -1,43 +1,38 @@
-import os
-
-from selene import browser, be, have
-from selene.core import command
-from selene.support.shared.jquery_style import s
+import allure
+from selene import have, by
 
 
-def test_dificult_form():
-    browser.open('automation-practice-form')
+@allure.title("Registration form success")
+def test_successful(setup_browser):
+    browser = setup_browser
 
-    # заполнение формы
-    s('#adplus-anchor').perform(command.js.remove)
-    s('#fixedban').perform(command.js.remove)
+    with allure.step("Открыть регистрационную форму"):
+        browser.open("https://demoqa.com/automation-practice-form")
+        browser.element(".practice-form-wrapper").should(have.text("Student Registration Form"))
+        browser.driver.execute_script("$('footer').remove()")
+        browser.driver.execute_script("$('#fixedban').remove()")
 
-    browser.element('[id=firstName]').should(be.blank).type('Ivan')
-    browser.element('[id=lastName]').should(be.blank).type('Ivanov')
-    browser.element('[id=userEmail]').should(be.blank).type('ivan@co.com')
-    browser.element('.custom-control-label').click()
-    browser.element('[id=userNumber]').should(be.blank).type('9999999999')
+    with allure.step("Заполнить регистрационную форму"):
+        browser.element("#firstName").set_value("Ivan")
+        browser.element("#lastName").set_value("Ivanov")
+        browser.element("#userEmail").set_value("asas@mail.ru")
+        browser.element("#genterWrapper").element(by.text("Other")).click()
+        browser.element("#userNumber").set_value("1231231230")
+        # browser.element("#dateOfBirthInput").click()
+        # browser.element(".react-datepicker__month-select").s("July")
+        # browser.element(".react-datepicker__year-select").selectOption("2008")
+        # browser.element(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click()
+        browser.element("#subjectsInput").send_keys("Maths")
+        browser.element("#subjectsInput").press_enter()
+        browser.element("#hobbiesWrapper").element(by.text("Sports")).click()
+        # browser.element("#uploadPicture").uploadFromClasspath("img/1.png")
+        browser.element("#currentAddress").set_value("Some street 1")
+        browser.element("#state").click()
+        browser.element("#stateCity-wrapper").element(by.text("NCR")).click()
+        browser.element("#city").click()
+        browser.element("#stateCity-wrapper").element(by.text("Delhi")).click()
+        browser.element("#submit").click()
 
-    browser.element('[id="dateOfBirthInput"]').click()
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__year-select').click()
-    browser.element('[value="1989"]').click()
-    browser.element('.react-datepicker__month-select').click()
-    browser.element('[value="11"]').click()
-    browser.element('.react-datepicker__day--028').click()
-    browser.element('[id="subjectsInput"]').click().send_keys("Maths").press_enter()
-    browser.element('[for="hobbies-checkbox-1"]').click()
-    # browser.element('#uploadPicture').send_keys(os.path.abspath('tests/images/picture.jpeg'))
-    browser.element('[id=currentAddress]').type('Москва, ул. Тверская, дом 1')
-    browser.element('input#react-select-3-input').type("Haryana").press_enter()
-    browser.element('input#react-select-4-input').type("Panipat").press_enter()
-    browser.element('[id="submit"]').click()
-    browser.element('[id="closeLargeModal"]').click()
-
-
-    # Проверка формы
-    browser.element('.modal-header').should(have.exact_text('Thanks for submitting the form'))
-
-    # Закрытие модального окна
-    browser.element('#closeLargeModal').click()
-    browser.element('.modal-dialog').should(be.absent)
+    with allure.step("Проверить результат"):
+        browser.element("#example-modal-sizes-title-lg").should(have.text("Thanks for submitting the form"))
+        
