@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config
+from selene import Browser, Config, browser
 
 from utils import attach
 
@@ -13,7 +13,6 @@ def pytest_addoption(parser):
         '--browser_version',
         default='100.0'
     )
-
 
 
 @pytest.fixture(scope='function')
