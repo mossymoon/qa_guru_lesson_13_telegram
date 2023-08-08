@@ -1,1 +1,20 @@
-{"name": "Registration form success", "status": "passed", "steps": [{"name": "Открыть регистрационную форму", "status": "passed", "start": 1691435726043, "stop": 1691435729405}, {"name": "Заполнить регистрационную форму", "status": "passed", "start": 1691435729405, "stop": 1691435734298}, {"name": "Проверить результат", "status": "passed", "start": 1691435734298, "stop": 1691435734428}], "start": 1691435726042, "stop": 1691435734429, "uuid": "27df3ba6-a066-4f80-978f-775fa4fe9a29", "historyId": "2f2faffaa081be709e8a6a8de0c7632c", "testCaseId": "2f2faffaa081be709e8a6a8de0c7632c", "fullName": "tests.test_form#test_successful", "labels": [{"name": "parentSuite", "value": "tests"}, {"name": "suite", "value": "test_form"}, {"name": "host", "value": "MBP-stepa"}, {"name": "thread", "value": "95227-MainThread"}, {"name": "framework", "value": "pytest"}, {"name": "language", "value": "cpython3"}, {"name": "package", "value": "tests.test_form"}]}
+{
+  reportName: "Allure Report",
+  testRuns: [ ],
+  statistic: {
+    failed: 0,
+    broken: 0,
+    skipped: 0,
+    passed: 1,
+    unknown: 0,
+    total: 1
+  },
+  time: {
+    start: 1658422101901,
+    stop: 1658510794080,
+    duration: 88692179,
+    minDuration: 0,
+    maxDuration: 2939,
+    sumDuration: 2946
+  }
+}
